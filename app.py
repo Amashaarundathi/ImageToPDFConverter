@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import os, random, string
-from PIL import Image  # pip install pillow
+from PIL import Image  
 
 class ImageToPDFConverter:
     def __init__(self, root):
@@ -9,11 +9,11 @@ class ImageToPDFConverter:
         self.files = []
         self.pdf_name = tk.StringVar()
 
-        # === COLORS ===
-        self.blue = "#0078D7"       # Windows blue
-        self.button_blue = "#0094FF"  # lighter blue for buttons
+        #  COLORS
+        self.blue = "#0078D7"       
+        self.button_blue = "#0094FF"  
 
-        # === HEADER FRAME === (taller for buttons)
+        #  HEADER FRAME
         header_frame = tk.Frame(root, bg=self.blue, height=120)
         header_frame.pack(fill=tk.X)
 
@@ -23,19 +23,19 @@ class ImageToPDFConverter:
                  font=("Helvetica", 16, "bold"),
                  bg=self.blue, fg="white").pack(pady=(10, 5))
 
-        # Select Images button (moved to header)
+        # Select Images button 
         tk.Button(header_frame, text="Select Images",
                   command=self.select_images,
                   bg=self.button_blue, fg="white").pack(pady=(0, 10))
 
-        # === BODY FRAME ===
+        # BODY FRAME
         body_frame = tk.Frame(root, bg="white")
         body_frame.pack(fill=tk.BOTH, expand=True)
 
         self.listbox = tk.Listbox(body_frame, selectmode=tk.MULTIPLE)
         self.listbox.pack(pady=10, fill=tk.BOTH, expand=True, padx=10)
 
-        # === BOTTOM FRAME ===
+        # BOTTOM FRAME
         bottom_frame = tk.Frame(root, bg=self.blue)
         bottom_frame.pack(fill=tk.X)
 
@@ -62,7 +62,7 @@ class ImageToPDFConverter:
             messagebox.showerror("Error", "No images selected!")
             return
 
-        # if name blank, generate random name
+        # if name blank, 
         name = self.pdf_name.get().strip()
         if not name:
             rand = ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
